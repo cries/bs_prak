@@ -1,5 +1,6 @@
 #!/usr/bin/sh
 
+realname=$(finger $USER | head -1 | cut -d: -f3)
 
 hour=`date +%H`
 
@@ -14,7 +15,7 @@ elif [ $hour -ge "18" ] && [ $hour -lt "23" ]; then
 	msg="Abend"
 fi
 
-echo "Guten $msg $USER, es ist `date +%H:%M` Uhr."
+echo "Guten $msg $realname, es ist `date +%H:%M` Uhr."
 sz=`du -ks ~ | cut -f1`
 sz=`expr $sz / 1024`
 echo "Das Homeverzeichnis belegt $sz MB."
