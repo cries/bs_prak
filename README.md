@@ -5,9 +5,7 @@ Praktikum Betriebssysteme und verteilte Systeme
 ##Fragen##
 
 
-###Praktikum 1:###
-
-https://github.com/cries/bs_prak/wiki/Prak1
+####Praktikum 1:#### https://github.com/cries/bs_prak/wiki/Prak1
 
 
 ###Praktikum 2:###
