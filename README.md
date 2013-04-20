@@ -1,23 +1,19 @@
-bs_prak
+Praktikum Betriebssysteme und verteilte Systeme 
 =======
 
-Praktikum Betriebssysteme und verteilte Systeme 
 
-Fragen
-======
+**Fragen**
 
-Praktikum 1: 
+
+***Praktikum 1:*** 
 
 https://github.com/cries/bs_prak/wiki/Prak1
 
----------------
 
-Praktikum 2:
+***Praktikum 2:***
 
----------------
 
-Links
-=====
+**Links**
 
 BS1_13: http://www.gm.fh-koeln.de/hstl/BS1/13/
 
