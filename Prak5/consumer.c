@@ -19,6 +19,7 @@ int main(int argc, char* argv[]) {
   struct msqid_ds buffer;
   char* dienste[] = {"", "Terminalausgabe", "Dateianhang", "Emailversand"};
   
+  // Error Handling
   if (argc != 3) {
     printf("Usage: %s <warteschlange> <dienst>\n", argv[0]);
     return 1;
@@ -31,9 +32,11 @@ int main(int argc, char* argv[]) {
     }
     return 2;
   }
-  
+
+  // Id der Message-Queue holen
   msg_id = msgget((key_t)atoi(argv[1]), 0);
   
+  // Fehler
   if (msg_id == -1) {
     printf("Fehler: Auf die Nachrichtenwarteschlange mit dem Schlüssel '%s':\n", dienste[atoi(argv[2])]);
     return 3;
@@ -41,22 +44,31 @@ int main(int argc, char* argv[]) {
   
   printf("Starte Verarbeitung aller Nachrichten fuer den Dienst '%s'\n", dienste[atoi(argv[2])]);
   
+  // Datei-Pointer
   FILE *f;
+  // Addressat der Mail
   char* TO = "mi968";
   char str[2*MSGSIZE];
   
+  // Alle Messages mit dem angegebenen Dienst aus der Message-Queue holen
   while (msgrcv(msg_id, &msg, MSGSIZE, atoi(argv[2]), IPC_NOWAIT | MSG_NOERROR) != -1) {
     switch (atoi(argv[2])) {
+      // Terminalausgabe
       case 1:
         printf("Eine Nachricht wird ausgegeben: %s\n", msg.text);
       break;
+      // Dateianhang
       case 2:
+        // Öffne Datei-Stream (a = append)
         f = fopen("queue_datei", "a");
         fprintf(f, "%s\n", msg.text);
+        // Stream flushen
         fflush(f);
+        // Datei-Stream schließen
         fclose(f);
         printf("Die Nachricht '%s' wurde in die Datei 'queue_datei' geschrieben.\n", msg.text);  
       break;
+      // Emailversand
       case 3:
         sprintf(str, "echo %s | mail -s 'Nachricht aus der Warteschlange' %s@gm.fh-koeln.de", msg.text, TO);
         printf("Kommando wird ausgefuehrt: %s\n", str);

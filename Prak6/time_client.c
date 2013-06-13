@@ -21,7 +21,8 @@ int main(int argc, char *argv[]) {
 		strcmp(argv[2], "time") != 0 &&
 		strcmp(argv[2], "wday") != 0)
 	{
-		printf("Angegebener Dienst ('%s') ist unbekannt!\n", argv[2]);
+		printf("Angegebener Dienst '%s' ist unbekannt!\n", argv[2]);
+		printf("Verfuegbare Dienste: <date|time|wday>\n");
 		exit(3);
 	}
 	
