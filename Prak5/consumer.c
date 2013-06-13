@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
   msg_id = msgget((key_t)atoi(argv[1]), 0);
   
   if (msg_id == -1) {
-    printf("Fehler: Auf die Nachrichtenwarteschlange mit dem Schlüssel '%s':\n", dienste[atoi(argv[2])]);
+    printf("Fehler: Auf die Nachrichtenwarteschlange mit dem SchlÃ¼ssel '%s':\n", dienste[atoi(argv[2])]);
     return 3;
   }
   
@@ -75,7 +75,7 @@ int main(int argc, char* argv[]) {
   if (msgctl(msg_id, IPC_STAT, &buffer) == 0) {
     if (buffer.msg_qnum <= 0) {
       if (msgctl(msg_id, IPC_RMID, &buffer) == 0) {
-        printf("Meldung: Leerw Warteschlange wurde geloescht.\n");
+        printf("Meldung: Leere Warteschlange wurde geloescht.\n");
       }
     }
   }
