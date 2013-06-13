@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
     for (int i=1; i<4; i++) {
       printf("%i - %s\n", i, dienste[i]);
     }
-    return 3;
+    return 2;
   }
   
   // Message-Queue anlegen mit id aus Parameter argv[1]
@@ -39,7 +39,7 @@ int main(int argc, char* argv[]) {
   // Fehler beim erstellen der Msg-Queue
   if (msg_id == -1) {
     printf("Nachrichtenwarteschlange mit dem Schlüssel '%s' konnte nicht angelegt werden\n");
-    return 2;
+    return 3;
   }
   
   // Dienst festlegen
