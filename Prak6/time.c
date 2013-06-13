@@ -1,22 +1,21 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "time.h"
+
 #define PIPE_READ 0
 #define PIPE_WRITE 1
 #define MAX 128
 
-                     .
-                     .
-                     .
+int main() {
 
       char buf[128];
-      char *day[] = {"Sonntag","Montag","Dienstag","Mittwoch","Donnerstag","Freitag","Samstag"};
+      char *day[] = {"Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"};
       struct tm *datum;
       time_t heute;
-
+    
       time(&heute);
       datum = localtime(&heute);
-
-                     .
-                     .
-                     .
 
       /* Dienstanforderung überprüfen */
 
@@ -42,4 +41,4 @@
          {
          write(answerPipefd[PIPE_WRITE], err_msg, strlen(err_msg)+1);
          }
-
+ }
